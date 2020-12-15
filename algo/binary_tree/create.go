@@ -28,8 +28,43 @@ func create() *Node {
 	return node
 }
 
+func inorder(root *Node) {
+	if root == nil {
+		return
+	}
+	inorder(root.Left)
+	fmt.Print(root.Data)
+	inorder(root.Right)
+}
+
+func preorder(root *Node) {
+	if root == nil {
+		return
+	}
+	fmt.Print(root.Data)
+	preorder(root.Left)
+	preorder(root.Right)
+}
+
+func postorder(root *Node) {
+	if root == nil {
+		return
+	}
+	postorder(root.Left)
+	postorder(root.Right)
+	fmt.Print(root.Data)
+}
+
 func main() {
 	println("main")
 	root := create()
 	fmt.Printf("%+v\n", *root)
+	fmt.Println("-------------------")
+	fmt.Println("----Inorder----")
+	inorder(root)
+	fmt.Println("----Preorder----")
+	preorder(root)
+	fmt.Println("---Postorder----")
+	postorder(root)
+	fmt.Println("-------------------")
 }
